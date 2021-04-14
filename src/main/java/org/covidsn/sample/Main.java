@@ -1,7 +1,9 @@
 package org.covidsn.sample;
 	
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.covidsn.covid.tools.Outils;
@@ -16,11 +18,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 
 public class Main extends Application  implements Initializable {
+
+
 	
-	public static String choix = "";
+
+
 	
 	@FXML
     private MenuButton menuadminbtn;
@@ -57,13 +70,19 @@ public class Main extends Application  implements Initializable {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
+
+
+		 launch(args);
+
+
 	}
 	
 	@FXML
 	private void acquisition(ActionEvent event) throws IOException  {
+
 		String	url = "/data_acquisition/acquisition_module.fxml";
 		Outils.load(event, url);
+
 	}
 	
 	@FXML
@@ -78,6 +97,7 @@ public class Main extends Application  implements Initializable {
 	}
 	@FXML
 	private void chargement(ActionEvent event) throws IOException {
+
 		String url = "/data_loader/liste_fichier_xml_json.fxml";
 		Outils.load(event, url);
 	}

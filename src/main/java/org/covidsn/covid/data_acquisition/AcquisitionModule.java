@@ -4,12 +4,18 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
 
+
+import org.covidsn.covid.dao.arrondissement.ArrondissementDB;
+import org.covidsn.covid.dao.commune.Commune;
+import org.covidsn.covid.dao.commune.CommuneDB;
+import org.covidsn.covid.dao.departement.DepartementDB;
 import org.covidsn.covid.tools.Outils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class AcquisitionModule {
-	
+
+
 	@FXML
     private JFXButton telechargerbtn;
 
@@ -23,6 +29,9 @@ public class AcquisitionModule {
     private void retourButton(ActionEvent event) throws IOException {
     	String url = "/acceuil.fxml";
 		Outils.load(event, url);
+        ArrondissementDB o = new ArrondissementDB();
+        String r = o.getCodeArrondissementByName("Dakar");
+        System.out.println(r);
     }
 
     @FXML
