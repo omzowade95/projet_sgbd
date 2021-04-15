@@ -6,11 +6,21 @@ plugins {
 
 group 'covid_sn'
 version '1.0-SNAPSHOT'
-
+compileJava.options.encoding = 'UTF-8'
+ext {
+    arcgisVersion = '100.10.0'
+}
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
+    maven {
+        url 'https://esri.jfrog.io/artifactory/arcgis'
+    }
+    maven {
+        url 'https://olympus.esri.com/artifactory/arcgisruntime-repo'
+    }
 }
 
 dependencies {
@@ -18,7 +28,7 @@ dependencies {
     implementation group: 'com.jfoenix', name: 'jfoenix', version: '9.0.10'
     // https://mvnrepository.com/artifact/org.controlsfx/controlsfx
     implementation group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
-
+    implementation "com.esri.arcgisruntime:arcgis-java:$arcgisVersion"
 }
 
 javafx {
