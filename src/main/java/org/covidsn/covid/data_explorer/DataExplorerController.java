@@ -164,5 +164,6 @@ public class DataExplorerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         datepicker = new DatePicker();
+        loadMap();
     }
 }
