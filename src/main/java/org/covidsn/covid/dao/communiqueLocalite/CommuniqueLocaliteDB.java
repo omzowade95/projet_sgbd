@@ -1,5 +1,6 @@
 package org.covidsn.covid.dao.communiqueLocalite;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,8 +16,7 @@ public class CommuniqueLocaliteDB  implements  ICommuniqueLocalite {
         entityManager.persist(c);
         entityManager.getTransaction().commit();
         //entityManager.getTransaction().rollback();
-
-        this.entityManagerFactory.close();
+      //  entityManagerFactory.close();
 
     }
 }

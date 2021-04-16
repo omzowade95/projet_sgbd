@@ -37,6 +37,8 @@ public class DataLoader implements Initializable{
 	     @FXML
 	     private CheckTreeView<String> fichiertreeview ;
 
+		private  ObservableList<TreeItem<String>> list =  null ;
+
 
 
 	     @FXML
@@ -82,6 +84,26 @@ public class DataLoader implements Initializable{
 				 });
 
 
+				 fichiertreeview.getCheckModel().getCheckedItems().addListener(new ListChangeListener<TreeItem<String>>() {
+					 @Override public void onChanged(ListChangeListener.Change<? extends TreeItem<String>> change) {
+						 System.out.println("checkedItemsLabel, change.getList()");
+
+						 while (change.next()) {
+							 System.out.println("============================================");
+							 System.out.println("Change: " + change);
+							 System.out.println("Added sublist " + change.getAddedSubList());
+							 System.out.println("Removed sublist " + change.getRemoved());
+							 System.out.println("List " + change.getList());
+							 list = (ObservableList<TreeItem<String>>) change.getList();
+							 System.out.println("Added " + change.wasAdded() + " Permutated " + change.wasPermutated() + " Removed " + change.wasRemoved() + " Replaced "
+									 + change.wasReplaced() + " Updated " + change.wasUpdated());
+							 System.out.println("============================================");
+						 }
+					 }
+				 });
+
+
+
 			 }catch (JDOMException e) {
 				 e.printStackTrace();
 			 }
@@ -91,17 +113,11 @@ public class DataLoader implements Initializable{
 
 		}
 
-	public List cheekedItems() throws IOException {
 
-		List<TreeItem<String>> list = fichiertreeview.getCheckModel().
-				getCheckedItems();
+		public ObservableList<TreeItem<String>> cheekedItems(){
 
-		for (Object i : list) {
-			System.out.println(i);
+			return list;
 		}
-
-		return list;
-	}
 
 	@FXML
 	     private void retourButton(ActionEvent event) throws IOException {

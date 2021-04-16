@@ -2,16 +2,16 @@ package org.covidsn.covid.data_loader;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
+import java.util.*;
 
 
 import com.jfoenix.controls.JFXButton;
 
 import javafx.scene.control.TreeItem;
+import org.covidsn.covid.dao.communique.Communique;
+import org.covidsn.covid.dao.communique.CommuniqueDB;
+import org.covidsn.covid.dao.communiqueLocalite.CommuniqueLocalite;
+import org.covidsn.covid.dao.communiqueLocalite.CommuniqueLocaliteDB;
 import org.covidsn.covid.tools.Outils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +35,21 @@ public class ExportBD  implements Initializable{
     DataLoader dataloader ;
     
 
+    public void chargerDonnee(){
+		CommuniqueDB cl = new CommuniqueDB();
+		CommuniqueLocaliteDB cmdb = new CommuniqueLocaliteDB();
+		CommuniqueLocalite cm = new CommuniqueLocalite("A",4);
+		CommuniqueLocalite cmz = new CommuniqueLocalite("A",4);
+		Communique c = new Communique("nn","ddd",1,2,3,5,5,"t");
+
+		cm.setCommunique(c);
+		cmz.setCommunique(c);
+
+		cl.add(c);
+		cmdb.add(cm);
+		cmdb.add(cmz);
+
+	}
 
     
     @FXML
@@ -45,10 +60,21 @@ public class ExportBD  implements Initializable{
 
     @FXML
     void noTransaction(ActionEvent event) throws IOException {
-    	boolean bool = false;
+    	boolean bool = true;
 		dataloader = new DataLoader();
     	if (bool) {
 			List<TreeItem<String>> list = dataloader.cheekedItems();
+
+
+			if (list != null){
+				Object[] select = list.toArray();
+				for (int i = 0; i < select.length; i++) {
+					System.out.println(select[i]);
+				}
+				//chargerDonnee();
+			}else {
+				Outils.showErrorMessage("Error", "Vous n'avez selectionne aucun element");
+			}
 
         	Outils.showInformationMessage("Success", "Exportation termin�");
 

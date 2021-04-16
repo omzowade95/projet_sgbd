@@ -29,12 +29,10 @@ public class Communique implements Serializable {
     private int nbDeces;
     private String nomFichier;
 
-    @OneToMany
-    @JoinColumn
-    private Collection<CommuniqueLocalite> communiqueLocalites;
 
-    public Communique(int idCommunique, String nomCommunique, String dateCommunique, int nbTest, int nbNouveauCas, int nbCasCommun, int nbGueri, int nbDeces, String nomFichier, Collection<CommuniqueLocalite> communiqueLocalites) {
-        this.idCommunique = idCommunique;
+
+    public Communique( String nomCommunique, String dateCommunique, int nbTest, int nbNouveauCas, int nbCasCommun, int nbGueri, int nbDeces, String nomFichier) {
+
         this.nomCommunique = nomCommunique;
         this.dateCommunique = dateCommunique;
         this.nbTest = nbTest;
@@ -43,8 +41,9 @@ public class Communique implements Serializable {
         this.nbGueri = nbGueri;
         this.nbDeces = nbDeces;
         this.nomFichier = nomFichier;
-        this.communiqueLocalites = communiqueLocalites;
+
     }
+
 
     public Communique() {
 
