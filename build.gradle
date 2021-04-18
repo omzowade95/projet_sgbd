@@ -28,7 +28,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation group: 'com.jfoenix', name: 'jfoenix', version: '9.0.10'
     // https://mvnrepository.com/artifact/org.controlsfx/controlsfx
-<<<<<<< HEAD
+
     implementation group: 'org.controlsfx', name: 'controlsfx', version: '11.0.1'
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.30.Final'
@@ -40,16 +40,9 @@ dependencies {
     implementation group: 'org.jdom', name: 'jdom', version: '2.0.0'
     // https://mvnrepository.com/artifact/org.openjfx/javafx-swing
     implementation group: 'org.openjfx', name: 'javafx-swing', version: '11-ea+24'
-
-
-
-
-
-
-=======
-    implementation group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
     implementation "com.esri.arcgisruntime:arcgis-java:$arcgisVersion"
->>>>>>> 924d73bc213b0bd06a512a8eb96c64a3bf373e16
+    
+
 }
 
 javafx {

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="400.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+<AnchorPane focusTraversable="true" maxHeight="400.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.covidsn.sample.Main">
    <children>
       <Label contentDisplay="BOTTOM" layoutX="-2.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="53.0" prefWidth="608.0" style="-fx-background-color: #3498DB;" text="       COVID SN" textFill="#eeebeb" wrapText="true">
          <font>
