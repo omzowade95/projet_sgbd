@@ -3,6 +3,8 @@ package org.covidsn.covid.data_acquisition;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -60,8 +62,14 @@ public class TelechargementController implements Initializable {
    
 
     @FXML
-    void telecharger(ActionEvent event) throws IOException {
-    	
+    void telecharger(ActionEvent event) throws IOException, InterruptedException {
+        HashMap<String ,String> links = new Links().getLinks();
+        for (Map.Entry<String,String> entry : links.entrySet()){
+            String link = entry.getValue();
+            System.out.println(link);
+            File out = new File(".\\FilesDownloaded\\"+entry.getKey());
+            new Thread(new Download(link,out)).start();
+        }
         progressbar.setProgress(0);        
         if (lien != null) {
        	 try {
@@ -71,7 +79,7 @@ public class TelechargementController implements Initializable {
             	Outils.showInformationMessage("success", "telechargement reussi"+lien.toString());
             	String url = "/data_acquisition/acquisition_module.fxml";
         		Outils.load(event, url);
-        	
+
             } catch (Exception e1) {
            	 // TODO: handle exception
             }
