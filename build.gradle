@@ -42,10 +42,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.openjfx/javafx-swing
     implementation group: 'org.openjfx', name: 'javafx-swing', version: '11-ea+24'
     implementation "com.esri.arcgisruntime:arcgis-java:$arcgisVersion"
-  // natives "com.esri.arcgisruntime:arcgis-java-jnilibs:$arcgisVersion"
-   //natives "com.esri.arcgisruntime:arcgis-java-resources:$arcgisVersion"
+    //natives "com.esri.arcgisruntime:arcgis-java-jnilibs:$arcgisVersion"
+    //natives "com.esri.arcgisruntime:arcgis-java-resources:$arcgisVersion"
 
     implementation 'org.jsoup:jsoup:1.13.1'
+}
+configurations {
+    natives
 }
 
 javafx {

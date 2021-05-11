@@ -24,6 +24,7 @@ public class Communique implements Serializable {
     private String dateCommunique ;
     private int nbTest;
     private int nbNouveauCas;
+    private int nbCasContact;
     private int nbCasCommun;
     private int nbGueri;
     private int nbDeces;
@@ -31,7 +32,7 @@ public class Communique implements Serializable {
 
 
 
-    public Communique( String nomCommunique, String dateCommunique, int nbTest, int nbNouveauCas, int nbCasCommun, int nbGueri, int nbDeces, String nomFichier) {
+    public Communique( String nomCommunique, String dateCommunique, int nbTest, int nbNouveauCas, int nbCasContact, int nbCasCommun, int nbGueri, int nbDeces, String nomFichier) {
 
         this.nomCommunique = nomCommunique;
         this.dateCommunique = dateCommunique;
@@ -41,11 +42,28 @@ public class Communique implements Serializable {
         this.nbGueri = nbGueri;
         this.nbDeces = nbDeces;
         this.nomFichier = nomFichier;
+        this.nbCasContact = nbCasContact;
 
     }
 
 
     public Communique() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Communique{" +
+                "idCommunique=" + idCommunique +
+                ", nomCommunique='" + nomCommunique + '\'' +
+                ", dateCommunique='" + dateCommunique + '\'' +
+                ", nbTest=" + nbTest +
+                ", nbNouveauCas=" + nbNouveauCas +
+                ", nbCasContact=" + nbCasContact +
+                ", nbCasCommun=" + nbCasCommun +
+                ", nbGueri=" + nbGueri +
+                ", nbDeces=" + nbDeces +
+                ", nomFichier='" + nomFichier + '\'' +
+                '}';
     }
 }

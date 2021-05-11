@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.scene.control.TextField;
 import org.covidsn.covid.tools.Outils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,6 +41,11 @@ public class TelechargementController implements Initializable {
 
     @FXML
     private JFXButton retourbtn;
+
+    private JFXButton browserbtn;
+
+    @FXML
+    private TextField choicetfx;
     
     DirectoryChooser directoryChooser = new DirectoryChooser();
     String lien ;
@@ -58,7 +64,8 @@ public class TelechargementController implements Initializable {
     void  selectDirectory() {
     	 directoryChooser.setInitialDirectory(new File("src"));
     	File selectedDirectory = directoryChooser.showDialog(anch.getScene().getWindow());
-    	 lien = selectedDirectory.getAbsolutePath();	 
+    	 lien = selectedDirectory.getAbsolutePath();
+    	 choicetfx.setText(lien);
  	
     }
    
