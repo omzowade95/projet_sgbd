@@ -46,6 +46,8 @@ dependencies {
     //natives "com.esri.arcgisruntime:arcgis-java-resources:$arcgisVersion"
 
     implementation 'org.jsoup:jsoup:1.13.1'
+    // https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j
+    implementation group: 'net.sourceforge.tess4j', name: 'tess4j', version: '3.2.1'
 }
 configurations {
     natives
