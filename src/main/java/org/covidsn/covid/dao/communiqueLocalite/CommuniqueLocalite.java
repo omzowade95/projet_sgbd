@@ -12,9 +12,20 @@ public class CommuniqueLocalite {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String codeLoc;
     private int nombreCas;
+    @ManyToOne
+    private Communique communique;
+
+    public Communique getCommunique() {
+        return communique;
+    }
+
+    public void setCommunique(Communique communique) {
+        this.communique = communique;
+    }
 
     @Transient
     Collection collection = null;
@@ -43,19 +54,16 @@ public class CommuniqueLocalite {
         this.nombreCas = nombreCas;
     }
     
-    public Collection addLoc(CommuniqueLocalite l){
-        collection.add(l);
-        return collection;
-    }
 
-    public Collection listeLoc(){
-        return collection;
-    }
 
-    public CommuniqueLocalite(int id, String codeLoc, int nombreCas, Collection collection) {
-        this.id = id;
+    public CommuniqueLocalite( String codeLoc, int nombreCas) {
+
         this.codeLoc = codeLoc;
         this.nombreCas = nombreCas;
-        this.collection = collection;
+
+    }
+
+    public CommuniqueLocalite() {
+
     }
 }

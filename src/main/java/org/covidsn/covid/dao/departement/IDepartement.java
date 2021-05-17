@@ -9,4 +9,6 @@ public interface IDepartement {
     public boolean delete(int idF );
     public List<Departement> ListeDepartement();
     public String getCodeDepartementByName(String name);
+
+    public String getNameByCode(String code);
 }

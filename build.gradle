@@ -7,18 +7,30 @@ plugins {
 group 'covid_sn'
 version '1.0-SNAPSHOT'
 
+run{
+    standardInput = System.in
+}
+ext {
+    arcgisVersion = '100.10.0'
+}
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
+    maven {
+        url 'https://esri.jfrog.io/artifactory/arcgis'
+    }
+    maven {
+        url 'https://olympus.esri.com/artifactory/arcgisruntime-repo'
+    }
 }
-
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation group: 'com.jfoenix', name: 'jfoenix', version: '9.0.10'
     // https://mvnrepository.com/artifact/org.controlsfx/controlsfx
-    implementation group: 'org.controlsfx', name: 'controlsfx', version: '11.0.1'
+    implementation group: 'org.controlsfx', name: 'controlsfx', version: '11.0.0'
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.30.Final'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
@@ -29,20 +41,33 @@ dependencies {
     implementation group: 'org.jdom', name: 'jdom', version: '2.0.0'
     // https://mvnrepository.com/artifact/org.openjfx/javafx-swing
     implementation group: 'org.openjfx', name: 'javafx-swing', version: '11-ea+24'
+    implementation "com.esri.arcgisruntime:arcgis-java:$arcgisVersion"
+    //natives "com.esri.arcgisruntime:arcgis-java-jnilibs:$arcgisVersion"
+    //natives "com.esri.arcgisruntime:arcgis-java-resources:$arcgisVersion"
+
     implementation 'org.jsoup:jsoup:1.13.1'
-
-
-
-
-
-
+}
+configurations {
+    natives
 }
 
 javafx {
     version = "15.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.media' ]
 }
 
+
+/*copyNatives(type: Copy) {
+    description = "Copies the arcgis native libraries into the " +
+            "project build directory for development."
+    group = "build"
+    configurations.natives.asFileTree.each {
+        from(zipTree(it))
+    }
+    // store native libraries in a common location shared with other samples
+    into "${System.properties.getProperty("user.home")}/.arcgis/$arcgisVersion"
+}
+*/
 
 mainClassName = 'org.covidsn.sample.Main'
 

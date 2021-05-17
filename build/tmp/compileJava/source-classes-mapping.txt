@@ -1,0 +1,68 @@
+org/covidsn/covid/dao/commune/CommuneDB.java
+ org.covidsn.covid.dao.commune.CommuneDB
+org/covidsn/covid/data_acquisition/Download.java
+ org.covidsn.covid.data_acquisition.Download
+org/covidsn/covid/dao/arrondissement/IArrondissement.java
+ org.covidsn.covid.dao.arrondissement.IArrondissement
+org/covidsn/covid/tools/Outils.java
+ org.covidsn.covid.tools.Outils
+org/covidsn/covid/dao/communique/ICommunique.java
+ org.covidsn.covid.dao.communique.ICommunique
+org/covidsn/covid/dao/commune/ICommune.java
+ org.covidsn.covid.dao.commune.ICommune
+org/covidsn/covid/dao/vaccination/IVaccination.java
+ org.covidsn.covid.dao.vaccination.IVaccination
+org/covidsn/covid/data_explorer/DataExplorerController.java
+ org.covidsn.covid.data_explorer.DataExplorerController
+org/covidsn/covid/dao/region/IRegion.java
+ org.covidsn.covid.dao.region.IRegion
+org/covidsn/covid/dao/departement/IDepartement.java
+ org.covidsn.covid.dao.departement.IDepartement
+org/covidsn/sample/Main.java
+ org.covidsn.sample.Main
+org/covidsn/covid/data_loader/ExportBD.java
+ org.covidsn.covid.data_loader.ExportBD
+org/covidsn/covid/data_acquisition/TelechargementController.java
+ org.covidsn.covid.data_acquisition.TelechargementController
+org/covidsn/covid/dao/communique/Communique.java
+ org.covidsn.covid.dao.communique.Communique
+org/covidsn/covid/dao/communiqueLocalite/CommuniqueLocalite.java
+ org.covidsn.covid.dao.communiqueLocalite.CommuniqueLocalite
+org/covidsn/covid/data_loader/DataLoader.java
+ org.covidsn.covid.data_loader.DataLoader
+ org.covidsn.covid.data_loader.DataLoader$1
+ org.covidsn.covid.data_loader.DataLoader$2
+org/covidsn/covid/dao/arrondissement/Arrondissement.java
+ org.covidsn.covid.dao.arrondissement.Arrondissement
+org/covidsn/covid/dao/departement/Departement.java
+ org.covidsn.covid.dao.departement.Departement
+org/covidsn/covid/data_acquisition/Links.java
+ org.covidsn.covid.data_acquisition.Links
+org/covidsn/covid/dao/region/Region.java
+ org.covidsn.covid.dao.region.Region
+org/covidsn/covid/data_acquisition/EssaiXML.java
+ org.covidsn.covid.data_acquisition.EssaiXML
+org/covidsn/covid/dao/region/RegionDB.java
+ org.covidsn.covid.dao.region.RegionDB
+org/covidsn/covid/dao/vaccination/VaccinationDB.java
+ org.covidsn.covid.dao.vaccination.VaccinationDB
+org/covidsn/covid/dao/communiqueLocalite/CommuniqueLocaliteDB.java
+ org.covidsn.covid.dao.communiqueLocalite.CommuniqueLocaliteDB
+org/covidsn/covid/data_acquisition/AcquisitionModule.java
+ org.covidsn.covid.data_acquisition.AcquisitionModule
+org/covidsn/covid/dao/arrondissement/ArrondissementDB.java
+ org.covidsn.covid.dao.arrondissement.ArrondissementDB
+org/covidsn/covid/data_acquisition/ExtractionController.java
+ org.covidsn.covid.data_acquisition.ExtractionController
+org/covidsn/covid/dao/vaccination/Vaccination.java
+ org.covidsn.covid.dao.vaccination.Vaccination
+org/covidsn/covid/dao/communiqueLocalite/ICommuniqueLocalite.java
+ org.covidsn.covid.dao.communiqueLocalite.ICommuniqueLocalite
+org/covidsn/covid/evolution_analyzer/EvolutionAnalyzerController.java
+ org.covidsn.covid.evolution_analyzer.EvolutionAnalyzerController
+org/covidsn/covid/dao/commune/Commune.java
+ org.covidsn.covid.dao.commune.Commune
+org/covidsn/covid/dao/departement/DepartementDB.java
+ org.covidsn.covid.dao.departement.DepartementDB
+org/covidsn/covid/dao/communique/CommuniqueDB.java
+ org.covidsn.covid.dao.communique.CommuniqueDB

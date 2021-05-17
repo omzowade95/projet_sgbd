@@ -9,4 +9,5 @@ public interface IRegion {
     public boolean delete(int idF );
     public List<Region> ListeRegion();
     public String getCodeRegionByName(String name);
+    public String getNameByCode(String code);
 }

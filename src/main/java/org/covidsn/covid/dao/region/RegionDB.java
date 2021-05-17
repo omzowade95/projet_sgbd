@@ -52,4 +52,18 @@ public class RegionDB implements IRegion {
 
         return book ;
     }
+
+    @Override
+    public String getNameByCode(String code) {
+        String book = null ;
+        try {
+            book = entityManager.createQuery("SELECT r.nomRegion FROM Region r WHERE r.code = :code", String.class)
+                    .setParameter("code", code)
+                    .getSingleResult();
+        }catch (Exception e){
+
+        }
+
+        return book ;
+    }
 }

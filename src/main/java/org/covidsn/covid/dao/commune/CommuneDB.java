@@ -50,4 +50,19 @@ public class CommuneDB implements ICommune {
         }
         return commune ;
     }
+
+    @Override
+    public String getNameByCode(String code) {
+        String book = null ;
+        try {
+            book = entityManager.createQuery("SELECT r.nomCommune FROM Commune r WHERE r.code = :code", String.class)
+                    .setParameter("code", code)
+                    .getSingleResult();
+
+        }catch (Exception e){
+
+        }
+
+        return book ;
+    }
 }

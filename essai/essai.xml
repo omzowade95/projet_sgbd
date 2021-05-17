@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<_2020-01>
+    <_01-01-2020>
+        <nombre-test>33</nombre-test>
+        <nombre-nouveaux-cas>22</nombre-nouveaux-cas>
+        <nombre-cas-contact>08</nombre-cas-contact>
+        <nombre-cas-communautaires nombre = "5">
+            <nom-localite>dakar</nom-localite>
+            <nombre-cas>8</nombre-cas>
+            <nom-localite>thies</nom-localite>
+            <nombre-cas>6</nombre-cas>
+        </nombre-cas-communautaires>
+        <nombre-gueris>3</nombre-gueris>
+        <nombre-deces>1</nombre-deces>
+        <nom-fichier-source>COMMUNIQUE COVID</nom-fichier-source>
+        <date-heure-extraction>03-05-2021 00:45</date-heure-extraction>
+        
+    </_01-01-2020>
+
+    <_02-01-2020>
+        <nombre-test>33</nombre-test>
+        <nombre-nouveaux-cas>22</nombre-nouveaux-cas>
+        <nombre-cas-contact>08</nombre-cas-contact>
+        <nombre-cas-communautaires nombre = "6">
+            <nom-localite>dakar</nom-localite>
+            <nombre-cas>8</nombre-cas>
+            <nom-localite>bargny</nom-localite>
+            <nombre-cas>6</nombre-cas>
+        </nombre-cas-communautaires>
+        <nombre-gueris>3</nombre-gueris>
+        <nombre-deces>1</nombre-deces>
+        <nom-fichier-source>COMMUNIQUE COVID</nom-fichier-source>
+        <date-heure-extraction>03-05-2021 00:45</date-heure-extraction>
+    </_02-01-2020>
+
+    <_03-01-2020>
+        <nombre-test>33</nombre-test>
+        <nombre-nouveaux-cas>22</nombre-nouveaux-cas>
+        <nombre-cas-contact>08</nombre-cas-contact>
+        <nombre-cas-communautaires nombre="6">
+            <nom-localite>dakar</nom-localite>
+            <nombre-cas>8</nombre-cas>
+            <nom-localite>louga</nom-localite>
+            <nombre-cas>6</nombre-cas>
+        </nombre-cas-communautaires>
+        <nombre-gueris>3</nombre-gueris>
+        <nombre-deces>1</nombre-deces>
+        <nom-fichier-source>COMMUNIQUE COVID</nom-fichier-source>
+        <date-heure-extraction>03-05-2021 00:45</date-heure-extraction>
+
+    </_03-01-2020>
+</_2020-01>
