@@ -29,9 +29,6 @@ public class AcquisitionModule {
     private void retourButton(ActionEvent event) throws IOException {
     	String url = "/acceuil.fxml";
 		Outils.load(event, url);
-        ArrondissementDB o = new ArrondissementDB();
-        String r = o.getCodeArrondissementByName("Dakar");
-        System.out.println(r);
     }
 
     @FXML

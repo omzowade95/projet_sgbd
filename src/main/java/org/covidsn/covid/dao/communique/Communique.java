@@ -24,17 +24,16 @@ public class Communique implements Serializable {
     private String dateCommunique ;
     private int nbTest;
     private int nbNouveauCas;
+    private int nbCasContact;
     private int nbCasCommun;
     private int nbGueri;
     private int nbDeces;
     private String nomFichier;
 
-    @OneToMany
-    @JoinColumn
-    private Collection<CommuniqueLocalite> communiqueLocalites;
 
-    public Communique(int idCommunique, String nomCommunique, String dateCommunique, int nbTest, int nbNouveauCas, int nbCasCommun, int nbGueri, int nbDeces, String nomFichier, Collection<CommuniqueLocalite> communiqueLocalites) {
-        this.idCommunique = idCommunique;
+
+    public Communique( String nomCommunique, String dateCommunique, int nbTest, int nbNouveauCas, int nbCasContact, int nbCasCommun, int nbGueri, int nbDeces, String nomFichier) {
+
         this.nomCommunique = nomCommunique;
         this.dateCommunique = dateCommunique;
         this.nbTest = nbTest;
@@ -43,10 +42,28 @@ public class Communique implements Serializable {
         this.nbGueri = nbGueri;
         this.nbDeces = nbDeces;
         this.nomFichier = nomFichier;
-        this.communiqueLocalites = communiqueLocalites;
+        this.nbCasContact = nbCasContact;
+
     }
+
 
     public Communique() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Communique{" +
+                "idCommunique=" + idCommunique +
+                ", nomCommunique='" + nomCommunique + '\'' +
+                ", dateCommunique='" + dateCommunique + '\'' +
+                ", nbTest=" + nbTest +
+                ", nbNouveauCas=" + nbNouveauCas +
+                ", nbCasContact=" + nbCasContact +
+                ", nbCasCommun=" + nbCasCommun +
+                ", nbGueri=" + nbGueri +
+                ", nbDeces=" + nbDeces +
+                ", nomFichier='" + nomFichier + '\'' +
+                '}';
     }
 }

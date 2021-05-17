@@ -49,5 +49,19 @@ public class DepartementDB implements IDepartement {
 
         return dept ;
     }
+
+    @Override
+    public String getNameByCode(String code) {
+        String book = null ;
+        try {
+            book = entityManager.createQuery("SELECT r.nomDept FROM Departement r WHERE r.code = :code", String.class)
+                    .setParameter("code", code)
+                    .getSingleResult();
+        }catch (Exception e){
+
+        }
+
+        return book ;
+    }
 }
 

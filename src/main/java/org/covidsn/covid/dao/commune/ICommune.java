@@ -9,4 +9,5 @@ public interface ICommune {
     public boolean delete(int idF );
     public List<Commune> ListeCommune();
     public String getCodeCommuneByname(String name);
+    public String getNameByCode(String code);
 }

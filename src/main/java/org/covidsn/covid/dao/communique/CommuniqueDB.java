@@ -18,7 +18,7 @@ public class CommuniqueDB implements ICommunique {
         entityManager.getTransaction().commit();
         //entityManager.getTransaction().rollback();
 
-        this.entityManagerFactory.close();
+       // entityManagerFactory.close();
 
     }
 
