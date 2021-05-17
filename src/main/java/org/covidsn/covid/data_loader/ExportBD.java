@@ -10,9 +10,7 @@ import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXButton;
 
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import org.covidsn.covid.dao.arrondissement.Arrondissement;
 import org.covidsn.covid.dao.arrondissement.ArrondissementDB;
 import org.covidsn.covid.dao.commune.CommuneDB;
 import org.covidsn.covid.dao.communique.Communique;
@@ -48,7 +46,13 @@ public class ExportBD  implements Initializable{
 
     DataLoader dataloader ;
 
-	List list = DataLoader.list;
+	List<TreeItem<String>> list = DataLoader.list;
+
+	private void recupDate(){
+		for (TreeItem<String> i: list) {
+			System.out.println(i.getValue());
+		}
+	}
 
 
 	private void loadNoTransactional(String fileName) throws IOException, JDOMException {
@@ -61,79 +65,82 @@ public class ExportBD  implements Initializable{
 
 
 		for (int i = 0; i < liste.size(); i++ ){
+				for (int j = 0; j < list.size(); j++) {
+					if (liste.get(i).getName().equals(list.get(j).getValue())) {
+						String nbTest = liste.get(i).getChild("nombre-test").getValue();
+						String nbNouveauxCas = liste.get(i).getChild("nombre-nouveaux-cas").getValue();
+						String nbCasContact = liste.get(i).getChild("nombre-cas-contact").getValue();
+						String nbCasComm = liste.get(i).getChild("nombre-cas-communautaires").getAttribute("nombre").getValue();
+						String nbGueris = liste.get(i).getChild("nombre-gueris").getValue();
+						String nbDeces = liste.get(i).getChild("nombre-deces").getValue();
+						String nomFichier = liste.get(i).getChild("nom-fichier-source").getValue();
+						String dateExtraction = liste.get(i).getChild("date-heure-extraction").getValue();
 
-			String nbTest = liste.get(i).getChild("nombre-test").getValue();
-			String nbNouveauxCas = liste.get(i).getChild("nombre-nouveaux-cas").getValue();
-			String nbCasContact = liste.get(i).getChild("nombre-cas-contact").getValue();
-			String nbCasComm = liste.get(i).getChild("nombre-cas-communautaires").getAttribute("nombre").getValue();
-			String nbGueris = liste.get(i).getChild("nombre-gueris").getValue();
-			String nbDeces = liste.get(i).getChild("nombre-deces").getValue();
-			String nomFichier = liste.get(i).getChild("nom-fichier-source").getValue();
-			String dateExtraction = liste.get(i).getChild("date-heure-extraction").getValue();
+						List<Element> ville = liste.get(i).getChild("nombre-cas-communautaires").getChildren();
 
-			List<Element> ville = liste.get(i).getChild("nombre-cas-communautaires").getChildren();
+						String localite = null;
+						String nbCas = null;
 
-			String localite =  null;
-			String nbCas =  null;
-
-			int n = 0;
-			for (int v = 0; v < ville.size(); v++) {
-				String nomV = ville.get(v).getName().toUpperCase(Locale.ROOT);
-
-
-				if (nomV.toLowerCase(Locale.ROOT).equals("nom-localite") ){
-					 localite = ville.get(v).getValue();
-				}else{
-					nbCas = ville.get(v).getValue();
-				}
-				n++;
-
-				if (n%2 == 0){
-
-					System.out.println(localite+"    "+nbCas);
+						int n = 0;
+						for (int v = 0; v < ville.size(); v++) {
+							String nomV = ville.get(v).getName().toUpperCase(Locale.ROOT);
 
 
-				Communique c = new 	Communique( nomFichier,dateExtraction, Integer.parseInt(nbTest), Integer.parseInt(nbNouveauxCas),
-						Integer.parseInt(nbNouveauxCas),Integer.parseInt(nbCasComm),  Integer.parseInt(nbGueris), Integer.parseInt( nbDeces), nomFichier);
-
-				RegionDB region = new RegionDB();
-				DepartementDB dept =new DepartementDB();
-				CommuneDB comm  = new CommuneDB();
-				ArrondissementDB arr  = new ArrondissementDB();
-
-				String val = region.getCodeRegionByName(localite);
-				if (val== null){
-					val = dept.getCodeDepartementByName(localite);
-					if (val == null){
-						val = arr.getCodeArrondissementByName(localite);
-						if (val == null){
-							val = comm.getCodeCommuneByname(localite);
-							if (val == null){
-								cml = new CommuniqueLocalite("not known",Integer.parseInt(nbCas));
-								cml.setCommunique(c);
-							}else{
-								cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
-								cml.setCommunique(c);
+							if (nomV.toLowerCase(Locale.ROOT).equals("nom-localite")) {
+								localite = ville.get(v).getValue();
+							} else {
+								nbCas = ville.get(v).getValue();
 							}
-						}else{
-							cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
-							cml.setCommunique(c);
-						}
-					}else{
-						cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
-						cml.setCommunique(c);
-					}
-				}else{
-					cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
-					cml.setCommunique(c);
-				}
+							n++;
 
-				CommuniqueDB cl = new CommuniqueDB();
-				CommuniqueLocaliteDB cmdb = new CommuniqueLocaliteDB();
-				cl.add(c);
-				cmdb.add(cml);
+							if (n % 2 == 0) {
+
+								System.out.println(localite + "    " + nbCas);
+
+
+								Communique c = new Communique(nomFichier, dateExtraction, Integer.parseInt(nbTest), Integer.parseInt(nbNouveauxCas),
+										Integer.parseInt(nbNouveauxCas), Integer.parseInt(nbCasComm), Integer.parseInt(nbGueris), Integer.parseInt(nbDeces), nomFichier);
+
+								RegionDB region = new RegionDB();
+								DepartementDB dept = new DepartementDB();
+								CommuneDB comm = new CommuneDB();
+								ArrondissementDB arr = new ArrondissementDB();
+
+								String val = region.getCodeRegionByName(localite);
+								if (val == null) {
+									val = dept.getCodeDepartementByName(localite);
+									if (val == null) {
+										val = arr.getCodeArrondissementByName(localite);
+										if (val == null) {
+											val = comm.getCodeCommuneByname(localite);
+											if (val == null) {
+												cml = new CommuniqueLocalite("not known", Integer.parseInt(nbCas));
+												cml.setCommunique(c);
+											} else {
+												cml = new CommuniqueLocalite(val, Integer.parseInt(nbCas));
+												cml.setCommunique(c);
+											}
+										} else {
+											cml = new CommuniqueLocalite(val, Integer.parseInt(nbCas));
+											cml.setCommunique(c);
+										}
+									} else {
+										cml = new CommuniqueLocalite(val, Integer.parseInt(nbCas));
+										cml.setCommunique(c);
+									}
+								} else {
+									cml = new CommuniqueLocalite(val, Integer.parseInt(nbCas));
+									cml.setCommunique(c);
+								}
+
+								CommuniqueDB cl = new CommuniqueDB();
+								CommuniqueLocaliteDB cmdb = new CommuniqueLocaliteDB();
+								cl.add(c);
+								cmdb.add(cml);
+							}
+						}
+					}
 				}
-			}
 		}
 	}
 
@@ -210,55 +217,59 @@ public class ExportBD  implements Initializable{
 
 				for (int j = 0; j < liste.size(); j++ ){
 
-					String nbTest = liste.get(j).getChild("nombre-test").getValue();
-					String nbNouveauxCas = liste.get(j).getChild("nombre-nouveaux-cas").getValue();
-					String nbCasContact = liste.get(j).getChild("nombre-cas-contact").getValue();
-					String nbCasComm = liste.get(j).getChild("nombre-cas-communautaires").getAttribute("nombre").getValue();
-					String nbGueris = liste.get(j).getChild("nombre-gueris").getValue();
-					String nbDeces = liste.get(j).getChild("nombre-deces").getValue();
-					String nomFichier = liste.get(j).getChild("nom-fichier-source").getValue();
-					String dateExtraction = liste.get(j).getChild("date-heure-extraction").getValue();
+						String nbTest = liste.get(j).getChild("nombre-test").getValue();
+						String nbNouveauxCas = liste.get(j).getChild("nombre-nouveaux-cas").getValue();
+						String nbCasContact = liste.get(j).getChild("nombre-cas-contact").getValue();
+						String nbCasComm = liste.get(j).getChild("nombre-cas-communautaires").getAttribute("nombre").getValue();
+						String nbGueris = liste.get(j).getChild("nombre-gueris").getValue();
+						String nbDeces = liste.get(j).getChild("nombre-deces").getValue();
+						String nomFichier = liste.get(j).getChild("nom-fichier-source").getValue();
+						String dateExtraction = liste.get(j).getChild("date-heure-extraction").getValue();
 
-					List<Element> ville = liste.get(j).getChild("nombre-cas-communautaires").getChildren();
+						List<Element> ville = liste.get(j).getChild("nombre-cas-communautaires").getChildren();
 
-					String localite =  null;
-					String nbCas =  null;
+						String localite =  null;
+						String nbCas =  null;
 
-					int n = 0;
-					for (int v = 0; v < ville.size(); v++) {
-						String nomV = ville.get(v).getName().toUpperCase(Locale.ROOT);
-
-
-						if (nomV.toLowerCase(Locale.ROOT).equals("nom-localite") ){
-							localite = ville.get(v).getValue();
-						}else{
-							nbCas = ville.get(v).getValue();
-						}
-						n++;
-
-						if (n%2 == 0){
-
-							System.out.println(localite+"    "+nbCas);
+						int n = 0;
+						for (int v = 0; v < ville.size(); v++) {
+							String nomV = ville.get(v).getName().toUpperCase(Locale.ROOT);
 
 
-							Communique c = new 	Communique( nomFichier,dateExtraction, Integer.parseInt(nbTest), Integer.parseInt(nbNouveauxCas),
-									Integer.parseInt(nbNouveauxCas),Integer.parseInt(nbCasComm),  Integer.parseInt(nbGueris), Integer.parseInt( nbDeces), nomFichier);
+							if (nomV.toLowerCase(Locale.ROOT).equals("nom-localite") ){
+								localite = ville.get(v).getValue();
+							}else{
+								nbCas = ville.get(v).getValue();
+							}
+							n++;
 
-							RegionDB region = new RegionDB();
-							DepartementDB dept =new DepartementDB();
-							CommuneDB comm  = new CommuneDB();
-							ArrondissementDB arr  = new ArrondissementDB();
+							if (n%2 == 0){
 
-							String val = region.getCodeRegionByName(localite);
-							if (val== null){
-								val = dept.getCodeDepartementByName(localite);
-								if (val == null){
-									val = arr.getCodeArrondissementByName(localite);
+								System.out.println(localite+"    "+nbCas);
+
+
+								Communique c = new 	Communique( nomFichier,dateExtraction, Integer.parseInt(nbTest), Integer.parseInt(nbNouveauxCas),
+										Integer.parseInt(nbNouveauxCas),Integer.parseInt(nbCasComm),  Integer.parseInt(nbGueris), Integer.parseInt( nbDeces), nomFichier);
+
+								RegionDB region = new RegionDB();
+								DepartementDB dept =new DepartementDB();
+								CommuneDB comm  = new CommuneDB();
+								ArrondissementDB arr  = new ArrondissementDB();
+
+								String val = region.getCodeRegionByName(localite);
+								if (val== null){
+									val = dept.getCodeDepartementByName(localite);
 									if (val == null){
-										val = comm.getCodeCommuneByname(localite);
+										val = arr.getCodeArrondissementByName(localite);
 										if (val == null){
-											cml = new CommuniqueLocalite("not known",Integer.parseInt(nbCas));
-											cml.setCommunique(c);
+											val = comm.getCodeCommuneByname(localite);
+											if (val == null){
+												cml = new CommuniqueLocalite("not known",Integer.parseInt(nbCas));
+												cml.setCommunique(c);
+											}else{
+												cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
+												cml.setCommunique(c);
+											}
 										}else{
 											cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
 											cml.setCommunique(c);
@@ -271,15 +282,12 @@ public class ExportBD  implements Initializable{
 									cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
 									cml.setCommunique(c);
 								}
-							}else{
-								cml = new CommuniqueLocalite(val,Integer.parseInt(nbCas));
-								cml.setCommunique(c);
-							}
 
-							entityManager.persist(c);
-							entityManager.persist(cml);
+								entityManager.persist(c);
+								entityManager.persist(cml);
+							}
 						}
-					}
+
 				}
 
 			}
@@ -307,7 +315,7 @@ public class ExportBD  implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		recupDate();
 		
 	}
 

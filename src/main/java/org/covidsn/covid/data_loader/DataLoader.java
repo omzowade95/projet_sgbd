@@ -162,7 +162,7 @@ public class DataLoader implements Initializable{
 							 document = builder.build(fichierXML);
 							 Element rootNode = document.getRootElement();
 							 List<Element> liste = rootNode.getChildren();
-							 String don = "No Data";
+							 String don = "";
 							 int i = 0;
 							 Label lblStreet = new Label();
 							 for (Element eClasse : liste) {
@@ -181,12 +181,10 @@ public class DataLoader implements Initializable{
 							 //Create PopOver and add look and feel
 							 PopOver popOver = new PopOver(vBox);
 							 popOver.setMaxSize(30,15);
-
-
 							 popOver.show(anch,100);
 						 }catch (Exception e){
 							 e.printStackTrace();
-							 System.out.println("there");
+							// System.out.println("there");
 						 }
 					 }
 				 }
