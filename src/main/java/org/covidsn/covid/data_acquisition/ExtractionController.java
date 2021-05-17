@@ -15,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.sourceforge.tess4j.TesseractException;
 import org.covidsn.covid.tools.Outils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +45,8 @@ public class ExtractionController implements Initializable {
 
 
 	    @FXML
-	    void genererJSON(ActionEvent event) throws IOException {
+	    void genererJSON(ActionEvent event) throws IOException, TesseractException {
+	    	new Extraction();
 	    	Outils.showInformationMessage("success", "Fichier JSON gener�");
         	String url = "/data_acquisition/acquisition_module.fxml";
     		Outils.load(event, url);

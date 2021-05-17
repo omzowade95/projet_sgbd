@@ -7,6 +7,14 @@ import net.sourceforge.tess4j.TesseractException;
 import java.io.File;
 
 public class Extraction {
+    private String nomCommunique;
+    private int  nombreTest;
+    private int testPositifs;
+    private int casContact;
+    private int transmissionCommunautaire;
+    private int  nombreGueris;
+    private int nombreDeces;
+    public String tab[];
 
     public Extraction() throws TesseractException {
         Tesseract tesseract = new Tesseract();
@@ -16,7 +24,7 @@ public class Extraction {
         String regExp[] = {"COMMUN!QUE\\s[0-9]{1,}",
                 "[0-9]{1,}\\stests",
                 "[0-9]{1,}\\ssont\\srevenus\\spositifs",
-                "[0-9]{1,}\\scas\\scontacts",
+                "[0-9]{1,}\\sCas\\scontacts",
                 "[0-9]{1,}\\scas\\sissus\\sde\\sla\\stransmission\\scommunautaire",
                 "[0-9]{1,}\\spatients",
                 "[0-9]{1,}\\sdécès"};
