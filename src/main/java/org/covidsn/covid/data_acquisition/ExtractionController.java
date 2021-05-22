@@ -24,8 +24,6 @@ import javafx.scene.control.TableView;
 
 public class ExtractionController implements Initializable {
 
-	private TelechargementController c = new TelechargementController();
-	private String directory = c.getLien();
 	 @FXML
 	    private TableView<String> fichiertable;
 
@@ -69,7 +67,7 @@ public class ExtractionController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		List<String> o = new ArrayList<>();
-		File folder = new File("FilesDownloaded");
+		File folder = new File(TelechargementController.getLien());
 		File[] listOfFiles = folder.listFiles();
 
 		for (File file : listOfFiles) {

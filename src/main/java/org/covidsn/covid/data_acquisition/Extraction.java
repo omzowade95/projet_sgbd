@@ -18,9 +18,9 @@ public class Extraction {
 
     public Extraction() throws TesseractException {
         Tesseract tesseract = new Tesseract();
-        tesseract.setDatapath("E://tessdata");
+        tesseract.setDatapath(".\\DocsProjets\\tessdata");
         tesseract.setLanguage("fra");
-        String content = tesseract.doOCR(new File(".\\FilesDownloaded\\COMMUNIQUE 389.pdf"));
+        String content = tesseract.doOCR(new File(".\\DocsProjets\\FilesDownloaded\\COMMUNIQUE 389.pdf"));
         String regExp[] = {"COMMUN!QUE\\s[0-9]{1,}",
                 "[0-9]{1,}\\stests",
                 "[0-9]{1,}\\ssont\\srevenus\\spositifs",

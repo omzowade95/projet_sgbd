@@ -48,9 +48,9 @@ public class TelechargementController implements Initializable {
     private TextField choicetfx;
     
     DirectoryChooser directoryChooser = new DirectoryChooser();
-    String lien ;
+    private static String lien ;
 
-    public  String getLien() {
+    public  static String getLien() {
         return lien;
     }
 
@@ -63,7 +63,7 @@ public class TelechargementController implements Initializable {
     @FXML
     void  selectDirectory() {
     	 directoryChooser.setInitialDirectory(new File("src"));
-    	File selectedDirectory = directoryChooser.showDialog(anch.getScene().getWindow());
+    	 File selectedDirectory = directoryChooser.showDialog(anch.getScene().getWindow());
     	 lien = selectedDirectory.getAbsolutePath();
     	 choicetfx.setText(lien);
  	
@@ -79,13 +79,12 @@ public class TelechargementController implements Initializable {
              HashMap<String ,String> links = new Links().getLinks();
              for (Map.Entry<String,String> entry : links.entrySet()){
                  String link = entry.getValue();
-                 System.out.println(link);
-                     File out = new File("\\files\\"+entry.getKey());
-                     new Thread(new Download(link,out)).start();
+                 File out = new File(lien+"\\"+entry.getKey());
+
+                 new Thread(new Download(link,out)).start();
 
                  }
 
-            	//System.out.println(lien.toString());
         		progressbar.setProgress(1);
             	Outils.showInformationMessage("success", "telechargement reussi"+lien.toString());
             	String url = "/data_acquisition/acquisition_module.fxml";
