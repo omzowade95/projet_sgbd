@@ -39,10 +39,8 @@ public class Extraction {
        for (int k = 0 ; k < regExp.length ; k++){
             contentPattern = Pattern.compile(regExp[k], Pattern.DOTALL);
             contentMatcher = contentPattern.matcher(content.replace("\n"," "));
-            if (contentMatcher.find()) {
-                System.out.println(contentMatcher.group(0));
+            if (contentMatcher.find())
                 list.add(contentMatcher.group(0));
-            }
         }
 
        this.nomCommunique = nomCommunique;

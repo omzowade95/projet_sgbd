@@ -13,7 +13,7 @@ public class CreateFile {
 
     public void fileXml(String nomSource, int nombreTest, int testPositifs , int casContacts , int tC , int nombreGueris, int nombreDeces) {
         try {
-            Element date = new Element("_2020-01");
+            Element date = new Element("_"+LocalDateTime.now().getYear()+LocalDateTime.now().getMonth());
             Document doc = new Document(date);
 
             Element communique = new Element("_01-01-2020");
@@ -29,7 +29,7 @@ public class CreateFile {
 
             XMLOutputter xml = new XMLOutputter();
             xml.setFormat(Format.getPrettyFormat());
-            xml.output(doc, new FileWriter(".\\DocsProjets\\FilesCreated\\file.xml"));
+            xml.output(doc, new FileWriter(".\\DocsProjets\\FilesCreated\\"+LocalDateTime.now().getYear()+"-"+LocalDateTime.now().getMonth()+".xml"));
 
         }catch (Exception e){
             e.printStackTrace();
