@@ -50,16 +50,16 @@ public class ExtractionController implements Initializable {
 
 	    @FXML
 	    void genererJSON(ActionEvent event) throws IOException, TesseractException {
-	    	Extraction ext = new Extraction((String)val);
-	    	new CreateFile().fileXml(ext.getNomCommunique(), ext.getNombreTest(), ext.getTestPositifs(), ext.getCasContact(), ext.getTransmissionCommunautaire(),ext.getNombreGueris(),ext.getNombreDeces());
 	    	Outils.showInformationMessage("success", "Fichier JSON gener�");
         	String url = "/data_acquisition/acquisition_module.fxml";
     		Outils.load(event, url);
 	    }
 
 	    @FXML
-	    void genererXML(ActionEvent event) throws IOException {
-	    	Outils.showInformationMessage("success", "Fichier XML gener� ");
+	    void genererXML(ActionEvent event) throws IOException, TesseractException {
+			Extraction ext = new Extraction((String)val);
+			new CreateFile().fileXml(ext.getNomCommunique(), ext.getNombreTest(), ext.getTestPositifs(), ext.getCasContact(), ext.getTransmissionCommunautaire(),ext.getNombreGueris(),ext.getNombreDeces());
+			Outils.showInformationMessage("success", "Fichier XML gener� ");
         	String url = "/data_acquisition/acquisition_module.fxml";
     		Outils.load(event, url);
 	    }
